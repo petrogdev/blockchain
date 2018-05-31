@@ -1,7 +1,10 @@
 ### Simple blockchain example ###
 Practicing on creating a simple blockchain.
 
-1. Add Tests
-2. Add env configuration
-3. Add package dependency manager
-4. Find ways to improve,  
+[]  Add Tests <br>
+[x]. Add env configuration <br>
+[]  Add package dependency manager <br>
+[]  Find ways to improve, <br>
+[]  Add p2p blockchain <br>
+[]  Add mining algorithm <br>
+[]  Add proof of stage algorithm <br>
