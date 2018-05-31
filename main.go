@@ -1,22 +1,22 @@
 package main
 
 import (
+  "bufio"
   "crypto/sha256"
   "encoding/hex"
   "encoding/json"
   "io"
   "log"
+  "net"
   "net/http"
   "os"
+  "strconv"
+  "sync"
   "time"
 
   "github.com/davecgh/go-spew/spew"
   "github.com/gorilla/mux"
   "github.com/joho/godotenv"
-  "net"
-  "bufio"
-  "strconv"
-  "sync"
 )
 
 type Block struct {
@@ -49,7 +49,7 @@ func main() {
   spew.Dump(genesisBlock)
   Blockchain = append(Blockchain, genesisBlock)
   //}()
-  log.Fatal(run())
+  //log.Fatal(run())
 
   server, err := net.Listen("tcp", ":"+os.Getenv("ADDR"))
   if err != nil {
@@ -159,24 +159,24 @@ func replaceChain(newBlocks []Block) {
   mutex.Unlock()
 }
 
-func run() error {
-  mux := makeMuxRouter()
-  httpAddr := os.Getenv("ADDR")
-  log.Println("Listening on ", os.Getenv("ADDR"))
-  s := &http.Server {
-    Addr:           ":" + httpAddr,
-    Handler:        mux,
-    ReadTimeout:    10 * time.Second,
-    WriteTimeout:   10 * time.Second,
-    MaxHeaderBytes: 1 << 20,
-  }
-
-  if err := s.ListenAndServe(); err != nil {
-    return err
-  }
-
-  return nil
-}
+//func run() error {
+//  mux := makeMuxRouter()
+//  httpAddr := os.Getenv("ADDR")
+//  log.Println("Listening on ", os.Getenv("ADDR"))
+//  s := &http.Server {
+//    Addr:           ":" + httpAddr,
+//    Handler:        mux,
+//    ReadTimeout:    10 * time.Second,
+//    WriteTimeout:   10 * time.Second,
+//    MaxHeaderBytes: 1 << 20,
+//  }
+//
+//  if err := s.ListenAndServe(); err != nil {
+//    return err
+//  }
+//
+//  return nil
+//}
 
 func makeMuxRouter() http.Handler {
   muxRouter := mux.NewRouter()
