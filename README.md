@@ -9,3 +9,4 @@ Thanks to article from [Medium](https://medium.com/@mycoralhealth/part-2-network
 [x]  Add networking to blockchain <br>
 []  Add p2p blockchain <br>
 []  Add proof of stage algorithm <br>
+[] explore other options
